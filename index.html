@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+<canvas>你的浏览器不支持，请升级</canvas>
+<script type="module">
+    /** 贪吃蛇设计思想
+     * 1. 使用数组完成表格布局画布要怎么布局表格??
+     * 2. 设置计时器，限定时间向前走
+     * 3. 如果碰到墙或者，碰到自己则游戏失败
+     * */
+    import infoConst from './js/infoConst.js';
+    import renderMap from "./js/renderMap.js";
+    //驱动获取keyCode完成
+    import snakeWalk from "./js/snakeWalk.js";
+
+    let canvas = document.querySelector("canvas");
+    canvas.setAttribute('width', infoConst.canvasWidth.toString());
+    canvas.setAttribute('height', infoConst.canvasHeight.toString());
+    let myCanvas = canvas.getContext('2d');
+    /**渲染地图 初始化地图的数组*/
+    let map = infoConst.arrFun();
+    myCanvas.clearRect(infoConst.initialCanvasWidth, infoConst.initialCanvasHeight, infoConst.canvasWidth, infoConst.canvasHeight);
+    renderMap(myCanvas, map,infoConst);
+    infoConst.initSnake(map);
+    infoConst.randomFoot(myCanvas, map, renderMap);
+    renderMap(myCanvas, map,infoConst);
+    document.onkeyup = function (e) {
+        snakeWalk(e.keyCode, myCanvas, map, renderMap,infoConst);
+        console.log(infoConst.getSnakeInfo(map, infoConst.snakeHead));
+    };
+
+</script>
+</body>
+
+</html>

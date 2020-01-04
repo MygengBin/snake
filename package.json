@@ -1,0 +1,11 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "这是耿彬写的一个像素贪吃蛇的H5小游戏",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gengbin 1371103410@qq.com",
+  "license": "ISC"
+}

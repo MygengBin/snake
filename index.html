@@ -38,16 +38,15 @@
     let myCanvas = canvas.getContext('2d');
     /**渲染地图 初始化地图的数组*/
     let map = infoConst.arrFun();
-    myCanvas.clearRect(infoConst.initialCanvasWidth, infoConst.initialCanvasHeight, infoConst.canvasWidth, infoConst.canvasHeight);
-    renderMap(myCanvas, map,infoConst);
+    // myCanvas.clearRect(infoConst.initialCanvasWidth, infoConst.initialCanvasHeight, infoConst.canvasWidth, infoConst.canvasHeight);
     infoConst.initSnake(map);
-    infoConst.randomFoot(myCanvas, map, renderMap);
-    renderMap(myCanvas, map,infoConst);
+    // infoConst.randomFoot(myCanvas, map, renderMap);
+    renderMap(myCanvas, map, infoConst);
     document.onkeyup = function (e) {
-        snakeWalk(e.keyCode, myCanvas, map, renderMap,infoConst);
-        console.log(infoConst.getSnakeInfo(map, infoConst.snakeHead));
+        console.log('进入键盘事件');
+        snakeWalk(e.keyCode, myCanvas, map, renderMap, infoConst);
     };
-
+    window.map = map;
 </script>
 </body>
 

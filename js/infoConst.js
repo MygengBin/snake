@@ -61,5 +61,84 @@ export default {
             }
         }
         return {infoX: x, infoY: y};
+    },
+    /**
+     * 由于蛇尾跟进只判断在直线的时候，所以在拐弯的时候会造成蛇尾丢失，这里需要重新找到
+     * @param keyCode
+     * @param map
+     */
+    findSnakeFoot: function (keyCode, map) {
+        let {infoX, infoY} = this.getSnakeInfo(map, this.snakeHead);
+        if (keyCode === 37) {
+            while (true) {
+                let findSnakeFoot = map[infoY][parseInt(infoX) + 1];
+                if (findSnakeFoot === 37) {
+                    infoX -= 1;
+                } else if (findSnakeFoot === 38) {
+                    infoY -= 1;
+                } else if (findSnakeFoot === 39) {
+                    infoX += 1;
+                } else if (findSnakeFoot === 40) {
+                    infoY += 1;
+                } else if (findSnakeFoot === 0) {
+                    map[infoY][infoX] = 0;
+                    map[infoY][parseInt(infoX) - 1] = 4;
+                    break;
+                }
+            }
+        } else if (keyCode === 38) {
+            let {infoX, infoY} = this.getSnakeInfo(map, this.snakeHead);
+            while (true) {
+                console.log(infoX);
+                let findSnakeFoot = map[parseInt(infoY) + 1][infoX];
+                if (findSnakeFoot === 37) {
+                    infoX -= 1;
+                } else if (findSnakeFoot === 38) {
+                    infoY -= 1;
+                } else if (findSnakeFoot === 39) {
+                    infoX += 1;
+                } else if (findSnakeFoot === 40) {
+                    infoY += 1;
+                } else if (findSnakeFoot === 0) {
+                    map[infoY][infoX] = 0;
+                    map[parseInt(infoY) - 1][infoX] = 4;
+                    break;
+                }
+            }
+        } else if (keyCode === 39) {
+            while (true) {
+                let findSnakeFoot = map[infoY][parseInt(infoX) - 1];
+                if (findSnakeFoot === 37) {
+                    infoX -= 1;
+                } else if (findSnakeFoot === 38) {
+                    infoY -= 1;
+                } else if (findSnakeFoot === 39) {
+                    infoX += 1;
+                } else if (findSnakeFoot === 40) {
+                    infoY += 1;
+                } else if (findSnakeFoot === 0) {
+                    map[infoY][infoX] = 0;
+                    map[infoY][parseInt(infoX) + 1] = 4;
+                    break;
+                }
+            }
+        } else if (keyCode === 40) {
+            while (true) {
+                let findSnakeFoot = map[parseInt(infoY) - 1][infoX];
+                if (findSnakeFoot === 37) {
+                    infoX -= 1;
+                } else if (findSnakeFoot === 38) {
+                    infoY -= 1;
+                } else if (findSnakeFoot === 39) {
+                    infoX += 1;
+                } else if (findSnakeFoot === 40) {
+                    infoY += 1;
+                } else if (findSnakeFoot === 0) {
+                    map[infoY][infoX] = 0;
+                    map[parseInt(infoY) + 1][infoX] = 4;
+                    break;
+                }
+            }
+        }
     }
 }

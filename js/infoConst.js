@@ -39,11 +39,16 @@ export default {
         }
         return map;
     },
-    /**初始化蛇 */
-    initSnake: (map) => {
+    /**初始化蛇(有蛇尾) */
+    initSnakeHaveFoot: (map) => {
         map[1][3] = 1;
         map[1][2] = 37;
         map[1][1] = 4;
+    },
+    initSnakeNotHaveFoot:(map)=>{
+        map[1][3] = 1;
+        map[1][2] = 37;
+        map[1][1] = 37;
     },
     /**获取蛇的信息
      * 获取关于蛇的信息(坐标)

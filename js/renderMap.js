@@ -2,6 +2,7 @@
 import infoConst from "./infoConst.js";
 
 export default function (myCanvas, map) {
+    myCanvas.clearRect(infoConst.initialCanvasWidth, infoConst.initialCanvasHeight, infoConst.canvasWidth, infoConst.canvasHeight);
     let x = -infoConst.tdWidth, y = -infoConst.tdHeight;
     for (let i = 0; i < map.length; i++) {
         y += infoConst.tdHeight;
